@@ -35,9 +35,9 @@ Other exceptions → 500 Internal Server Error ⚠️
 
 NoSuchElementException → 404 Not Found 🛑
 
-## Testing
+## 🔍 Testing
 Tests assert HTTP status codes, JSON response structure, and presence of 
-the instant timestamp using MockMvc 🔍
+the instant timestamp using MockMvc 
 > mvn test
 
 ## 🚀 Getting Started
