@@ -17,14 +17,14 @@ public class AnimalController {
         return species;
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleIllegalArgumentException(IllegalArgumentException e) {
+        return e.getMessage();
+    }
+
     @GetMapping
     String getAllAnimals() {
         throw new NoSuchElementException("No Animals found");
-    }
-
-    @ExceptionHandler(NoSuchElementException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String handleNoSuchElementException(NoSuchElementException e) {
-        return e.getMessage();
     }
 }
