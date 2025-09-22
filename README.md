@@ -1,3 +1,5 @@
+[![Java CI with Maven](https://github.com/nina-bornemann/Spring_Exception_Handling/actions/workflows/maven.yml/badge.svg)](https://github.com/nina-bornemann/Spring_Exception_Handling/actions/workflows/maven.yml)
+
 # 🐾 🚗 Spring Exception Handling Demo
 
 This project demonstrates how to handle exceptions in a Spring Boot REST 
