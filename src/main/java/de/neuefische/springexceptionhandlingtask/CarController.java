@@ -1,5 +1,6 @@
 package de.neuefische.springexceptionhandlingtask;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.NoSuchElementException;
@@ -14,6 +15,12 @@ public class CarController {
             throw new IllegalArgumentException("Only 'porsche' allowed");
         }
         return brand;
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleIllegalArgumentException(IllegalArgumentException e) {
+        return e.getMessage();
     }
 
     @GetMapping
