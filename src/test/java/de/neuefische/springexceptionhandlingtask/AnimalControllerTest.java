@@ -21,7 +21,11 @@ class AnimalControllerTest {
     void getAnimalSpecies_shouldThrowIllegalArgumentException() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/animals/cat"))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
-                .andExpect(MockMvcResultMatchers.content().string("Only 'dog' is allowed"));
+                .andExpect(MockMvcResultMatchers.content().json(""" 
+                                                                    {
+                                                                      "errorMessage": "Only 'dog' is allowed"
+                                                                    }"""))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.instant").isNotEmpty());
     }
 
     @Test
@@ -31,7 +35,8 @@ class AnimalControllerTest {
                 .andExpect(MockMvcResultMatchers.content().json(""" 
                                       {
                                         "errorMessage": "No animals were found."
-                                      }"""));
+                                      }"""))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.instant").isNotEmpty());
     }
 
 }

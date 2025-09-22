@@ -21,7 +21,11 @@ class CarControllerTest {
     void getCarBrand_shouldReturn_IllegalArgumentException() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/cars/Opel"))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
-                .andExpect(MockMvcResultMatchers.content().string("Only 'porsche' allowed"));
+                .andExpect(MockMvcResultMatchers.content().json(""" 
+                                                    {
+                                                        "errorMessage": "Only 'porsche' allowed"
+                                                     }"""))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.instant").isNotEmpty());
     }
 
     @Test
@@ -32,6 +36,7 @@ class CarControllerTest {
                                                                            {
                                                                              "errorMessage": "No cars were found."
                                                                            }
-                                                                           """));
+                                                                           """))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.instant").isNotEmpty());
     }
 }

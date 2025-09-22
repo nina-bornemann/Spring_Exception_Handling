@@ -1,4 +1,6 @@
 package de.neuefische.springexceptionhandlingtask;
 
-public record ErrorMessage(String errorMessage) {
+import java.time.Instant;
+
+public record ErrorMessage(String errorMessage, Instant instant) {
 }
